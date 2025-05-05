@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gemini Blog Generator</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1><img src="/static/images/logo_1.png" alt="AI Blog Generator Logo" class="logo"></h1>
+    <form action="/generate" method="post">
+      <label>Title:</label>
+      <input type="text" name="title" required>
+
+      <label>Keywords:</label>
+      <input type="text" name="keywords" required>
+
+      <label>Word Count:</label>
+      <input type="number" name="word_count" required>
+
+      <button type="submit">Generate Blog</button>
+    </form>
+  </div>
+</body>
+</html>
