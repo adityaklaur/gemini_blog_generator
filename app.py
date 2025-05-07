@@ -1,15 +1,19 @@
-import os
-GOOGLE_API_KEY = os.getenv("AIzaSyDTgJIkx0nyKYIRRm98pMQNt1oGdWaGIuw")
 
 from flask import Flask, render_template, request
 import google.generativeai as genai
+import os
 
 app = Flask(__name__)
 
-# Replace with your real API key
-API_KEY = "AIzaSyDTgJIkx0nyKYIRRm98pMQNt1oGdWaGIuw"
+# ✅ Use the API key from an environment variable
+API_KEY = os.getenv("API_KEY")  # Make sure this matches the name you set in Render
+
+if not API_KEY:
+    raise ValueError("API_KEY environment variable not set")
+
 genai.configure(api_key=API_KEY)
 
+# ✅ Initialize model
 model = genai.GenerativeModel(model_name="models/gemini-1.5-pro")
 
 @app.route('/')
@@ -31,5 +35,7 @@ def generate():
     except Exception as e:
         return f"Error generating blog: {e}"
 
+# ✅ Bind to host=0.0.0.0 and use PORT from Render
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Default to 5000 for local dev
+    app.run(host='0.0.0.0', port=port)
