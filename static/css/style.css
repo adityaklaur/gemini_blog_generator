@@ -77,3 +77,29 @@ button:hover {
   max-height: 270px; /* Adjust as needed */
   width: auto;
 }
+
+/* for mobile response */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+
+  .container h1 {
+    font-size: 2em;
+  }
+
+  .blog-content p {
+    font-size: 1.1em;
+  }
+
+  input, button {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  .logo {
+    max-height: 180px;
+  }
+}
